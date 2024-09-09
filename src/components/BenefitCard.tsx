@@ -1,10 +1,12 @@
 import React from 'react';
 import BcpBenefit from '../shared/types/Benefit.types';
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableWithoutFeedback, View, Dimensions } from 'react-native';
 
 type Props = {
 	onClick: (markerId: string) => void;
 }
+
+const width = Dimensions.get('screen').width - 42;
 
 const BenefitCard: React.FC<BcpBenefit & Props> = ({title, image, description, address, promo, marker: {markerId}, onClick}) => (
 	<TouchableWithoutFeedback
@@ -15,7 +17,7 @@ const BenefitCard: React.FC<BcpBenefit & Props> = ({title, image, description, a
 		>
 			<Image
 				source={{ uri: image }}
-				width={160}
+				width={width - 24}
 				height={100}
 			/>
 			<Text style={styles.title}>{title}</Text>
@@ -29,12 +31,13 @@ const BenefitCard: React.FC<BcpBenefit & Props> = ({title, image, description, a
 
 const styles = StyleSheet.create({
 	benefitCard: {
-		width: 180,
+		width: width,
 		height: 200,
 		borderRadius: 8,
-		marginRight: 10, // Añadir espacio entre las tarjetas
+		marginRight: 10,
 		backgroundColor: '#fff',
-		padding: 10, // Añadir algo de padding para que los textos no estén pegados
+		padding: 10,
+		marginHorizontal: 12
 	},
 	title: {
 		fontWeight: 'bold',

@@ -1,24 +1,24 @@
 import React from 'react';
 import {
-  View,
+  SafeAreaView,
   useColorScheme,
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import Main from './src/pages/main';
+import AppNavigator from './src/navigation';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1
+    flex: 1,
   };
 
   return (
-    <View style={backgroundStyle}>
-      <Main/>
-    </View>
+    <SafeAreaView style={backgroundStyle}>
+      <AppNavigator/>
+    </SafeAreaView>
   );
 }
 

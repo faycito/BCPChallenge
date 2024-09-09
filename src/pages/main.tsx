@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, DeviceEventEmitter, FlatList, View } from 'react-native';
+import { ScrollView, StyleSheet, DeviceEventEmitter, FlatList, View, Dimensions } from 'react-native';
 import { BcpMapView, Marker } from 'react-native-bcp-challenge-ismael';
 import { BENEFIT_DATA } from '../shared/BenefitData';
 import BenefitCard from '../components/BenefitCard';
@@ -7,6 +7,8 @@ import BcpBenefit from '../shared/types/Benefit.types';
 import Promos from '../components/Promos';
 import BCPPromo from '../shared/types/BCPPromo.types';
 import { findMarkerDetail } from '../shared/utils/marker.utils';
+
+const width = Dimensions.get('screen').width - 42;
 
 const MainPage = () => {
 
@@ -36,7 +38,7 @@ const MainPage = () => {
 	}, []);
 
 	const onCarouselMove = (index: number) => {
-		carouselRef?.current?.scrollToOffset({animated: true, offset: index * 180 });
+		carouselRef?.current?.scrollToOffset({animated: true, offset: index * width });
 	};
 
 	const onClosePromos = () => {
